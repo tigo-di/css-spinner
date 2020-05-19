@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+
+    <style type="text/css">
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        animation: bgcolors 18s linear 2s infinite;
+      }
+
+      body:hover {
+        animation-play-state: paused;
+      }
+
+      span.spinner {
+        display: block;
+        position: relative;
+        width: 70px;
+        height: 70px;
+        position: relative;
+        border: 8px dotted #fff;
+
+        border-radius: 50%;
+        animation: loopRotate linear 9s infinite;
+      }
+
+      @keyframes loopRotate {
+        to {
+          transform: rotate(359deg);
+        }
+      }
+
+      div:before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+
+        background: #fff;
+        animation: hideFirstSpin 1s forwards;
+      }
+
+      div {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        border-radius: 0 50% 50% 50%;
+        animation: ease-out 1s rollToZero forwards;
+        transition: background 1s;
+      }
+
+      @keyframes hideFirstSpin {
+        0% {
+          background: #fff;
+        }
+        99% {
+          background: #fff;
+        }
+        100% {
+          background: transparent;
+        }
+      }
+
+      div:hover {
+        animation: ease-out 1s roll;
+        background: red;
+        cursor: progress;
+      }
+
+      @keyframes rollToZero {
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes roll {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes bgcolors {
+        0% {
+          background: #fff;
+        }
+
+        26% {
+          background: coral;
+        }
+
+        52% {
+          background: yellowgreen;
+        }
+
+        77% {
+          background: teal;
+        }
+
+        90% {
+          background: tomato;
+        }
+        100% {
+          background: #fff;
+        }
+      }
+
+      p {
+        display: inline-block;
+        position: absolute;
+        bottom: 12px;
+        background: #fff;
+        font: 12px Verdana;
+        padding: 12px 20px;
+        box-shadow: 0 0 2px #3333;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="spinner"></span>
+    </div>
+
+    <p>
+      Animated background color when the cursor is outside the body.<br />Code
+      by
+      <a href="https://twitter.com/tigo">@tigo</a>
+    </p>
+  </body>
+</html>
